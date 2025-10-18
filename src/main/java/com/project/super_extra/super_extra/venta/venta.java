@@ -1,4 +1,4 @@
-package com.project.super_extra.super_extra;
+package com.project.super_extra.super_extra.venta;
 
 public class venta {
 
