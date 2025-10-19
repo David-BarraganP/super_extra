@@ -4,9 +4,9 @@ public class venta {
 
     public static void main(String[] args) {
         
-        string venta = "Total de las ventas ";
+        String venta = "Total de las ventas ";
         
-        string precio = 100.000;
+        int precio = 100;
 
         System.out.println(venta + precio);
 
