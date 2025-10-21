@@ -1,21 +1,20 @@
-package com.project.super_extra.super_extra.venta.conexiones;
+package com.project.super_extra.super_extra.cliente.conexiones;
 
-import com.project.super_extra.super_extra.venta.conexiones.conexion;
 // Importación de la clase que gestiona la conexión con la base de datos
-
+import com.project.super_extra.super_extra.cliente.conexiones.conexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.sql.SQLException;
+import java.sql.SQLException; // Importación para el manejo de excepciones SQL
 
-public class consultarventa {
+public class consultarCliente {
 
     public static void main(String[] args) {
 
         // Declaración de los objetos necesarios para realizar la conexión y la consulta
-        Connection conectar = null;
-        Statement declaracion = null;
-        ResultSet resultado = null;
+        Connection conectar = null;  // Objeto que representa la conexión con la base de datos
+        Statement declaracion = null; // Objeto para ejecutar sentencias SQL simples
+        ResultSet resultado = null;   // Objeto que almacena los resultados de la consulta
 
         try {
             // LLAMAR LA CLASE CONEXION PARA CONECTARSE
@@ -23,12 +22,12 @@ public class consultarventa {
             conectar = conexion.getConnection();
 
             // CREAR LA DECLARACION
-            //  // Se crea un objeto Statement que permitirá ejecutar consultas SQL
+            // Se crea un objeto Statement que permitirá ejecutar consultas SQL
             declaracion = conectar.createStatement();
 
             // CREAR LA CONSULTA
-            // // Se define la instrucción SQL para seleccionar los datos de la tabla 'cliente'
-            String sql = "select idpersona, nombre, apellido, celular from persona";
+            // Se define la instrucción SQL para seleccionar los datos de la tabla 'cliente'
+            String sql = "select id_cliente, nombre, telefono, email, direccion from cliente";
 
             // EJECUTAR LA CONSULTA
             // Se ejecuta la consulta y se almacena el resultado en el objeto ResultSet
@@ -36,33 +35,31 @@ public class consultarventa {
 
             // MOSTRAR LOS DATOS DE LA CONSULTA
             // Se recorre el conjunto de resultados fila por fila
-            while (resultado.next()) { 
+            while (resultado.next()) {
 
                 // Se obtienen los valores de cada columna del registro actual
-
-                int idventaResultado = resultado.getInt("id_venta");
-                String fechaResultado = resultado.getString("fecha");
-                int idclienteResultado = resultado.getString("id_cliente");
-                int totalResultado = resultado.getInt("total")
-                int idusuarioResultado = resultado.getInt("id_usuario");
+                int idClienteResultado = resultado.getInt("id_cliente");
+                String nombreResultado = resultado.getString("nombre");
+                int telefonoResultado = resultado.getInt("telefono");
+                String emailResultado = resultado.getString("email");
+                String direccionResultado = resultado.getString("direccion");
 
                 // Se muestran los datos en consola
-
-                System.out.println("id_venta: " + idventaResultado);
-                System.out.println("fecha: " + fechaResultado);
-                System.out.println("id_cliente: " + idclienteResultado);
-                System.out.println("total: " + totalResultado);
-                System.out.println("id_usuario: " + idusuarioResultado);
+                System.out.println("ID_CLIENTE: " + idClienteResultado);
+                System.out.println("NOMBRE: " + nombreResultado);
+                System.out.println("TELEFONO: " + telefonoResultado);
+                System.out.println("EMAIL: " + emailResultado);
+                System.out.println("DIRECCION: " + direccionResultado);
                 System.out.println(" "); // Espacio en blanco para separar registros
             }
 
         } catch (Exception e) {
-
+            // CAPTURA DE ERRORES
             // Si ocurre algún error (por ejemplo, fallo en la conexión o en la consulta), se muestra un mensaje
             System.out.println("Error: " + e);
 
         } finally {
-
+            // CIERRE DE RECURSOS
             // Se cierran el ResultSet, el Statement y la Connection en caso de haber sido abiertos
             try {
                 if (resultado != null) resultado.close();
@@ -74,3 +71,4 @@ public class consultarventa {
         }
     }
 }
+

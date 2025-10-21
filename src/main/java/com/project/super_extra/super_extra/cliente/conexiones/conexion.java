@@ -1,4 +1,4 @@
-package com.project.super_extra.super_extra.venta.conexiones;
+package com.project.super_extra.super_extra.cliente.conexiones;
 
 // Importa la clase del driver MySQL y las librerías necesarias para la conexión
 
@@ -14,7 +14,7 @@ public class conexion {
         var base  = "super_extra";
         var url = "jdbc:mysql://localhost:3306/" + base;
         var user = "root";
-        var pass = "Cdlm1946*";
+        var pass = "";
 
         try {
 
@@ -35,7 +35,7 @@ public class conexion {
         return miConexion;
     }
 
-    public static void main(String[] args) {
+    public static void main() {
 
         // Se llama al método getConnection() para intentar conectarse
         var Conexion = conexion.getConnection();

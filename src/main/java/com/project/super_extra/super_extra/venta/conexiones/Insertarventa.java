@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import org.springframework.data.convert.Jsr310Converters.StringToLocalDateConverter;
 
 public class Insertarventa {
   // Método estático que recibe los datos del cliente y los inserta en la base de datos
